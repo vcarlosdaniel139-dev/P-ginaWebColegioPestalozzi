@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Colegio Pestalozzi - Quetzaltenango</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppings:wght@300;400;500;600;700&display=swap" reñ="stylesheet">
+
+        <style>
+
+            :root{
+                --rojo-tinto:#b03436e3;  /*En lugar de verde musgo*/
+                --azul: #17288ae8;
+                --azul-medioclaro: #1e3adce8;
+                --rojo-obscuro: #6b090be3;
+                --amarillo: #fac907f4;
+                --blanco:#ffffff;
+                --gris:#f4f4f4;
+                --sombra: 0 5px 20px rgba(0,0,0,0.15);
+            }
+
+            *{              
+                margin:0;
+                padding:0;
+                box-sizing: border-box;
+                font-family: 'Poppings', sans-serif;
+            }
+
+            body{
+                background:var(--gris);
+                color:#333;
+            }
+
+            /* HEADER */
+
+            header{ 
+                background: linear-gradient(90deg,var(--rojo-tinto),var(--rojo-obscuro));
+                padding:20px;
+                color: white;
+                box-shadow: var(--sombra);
+            }
+
+            header h1{
+                text-align: center;
+                font-size: 40px;
+                letter-spacing: 2px;
+            }
+
+            header p{
+                text-align: center;
+                margin-top: 10px;
+                font-size: 18px;
+            }
+
+            /* NAVBAR */
+
+            nav{
+                background: var(--amarillo);
+                padding: 15px;
+            }
+
+            nav ul{
+                list-style:none;
+                display:flex;
+                justify-content: center;
+                gap: 25px;
+                flex-wrap: wrap;
+            }
+
+            nav ul li{
+                position: relative;
+            }
+
+            nav ul li a{
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
+                padding: 10px 15px;
+                transition: 0.3s;
+                border-radius: 5px;
+            }
+
+            nav ul li a:hover{
+                background: var(--amarillo);
+                color: black;
+            }
+
+            /* DROPDOWN */
+            .dropdown-content{
+                display: none;
+                position: absolute;
+                background: white;
+                min-width: 220px;
+                top: 45px;
+                z-index: 1000;
+                box-shadow: var(--sombra);
+                border-radius: 10px;
+                overflow: hidden;
+            }
+
+            .dropdown-content a{
+                display: block;
+                color: #333;
+                padding: 12px;
+                
+            }
+            .dropdown-content a:hover{
+                background: var(--amarillo);
+            }
+            .dropdown:hover .dropdown-content{
+                display: block;
+            }
+            .hero{
+                background: url('https://scontent.fgua6-2.fna.fbcdn.net/v/t39.30808-6/469124492_1323003262451033_3033961341607045832_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=zDk0uiO4FVwQ7kNvwFpYNiw&_nc_oc=AdqJ_mFZF8BPZljhxLJulnfTOTtZH8yX5ufVlWCAUSpMO-M6cpXA6ADWR8POTSAKxLw&_nc_zt=23&_nc_ht=scontent.fgua6-2.fna&_nc_gid=GZ2PoO7ZBcTSdSfwbRznYg&_nc_ss=7b289&oh=00_Af98-gRddSCzjmgE-9CESRnNmyej8PpTx6oixa1fSC9rsw&oe=6A23C103') center/cover;
+                height: 780px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                color: white;
+            }
+            .hero-content{
+                background: rgba(0,0,0,0.6);
+                padding: 40px;
+                border-radius: 20px;
+            }
+            .hero h2{
+                font-size: 50px;
+            }
+            .hero p{
+                margin-top: 15px;
+                font-size: 20px;
+            }
+            .btn{
+                display:inline-block;
+                margin-top: 20px;
+                padding: 14px 28px;
+                background: var(--amarillo);
+                color: black;
+                text-decoration: none;
+                border-radius: 30px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+            .btn:hover{
+                background: white;
+                transform: scale(1.05);
+            }
+
+            /* SECCIONES */
+
+            section{
+                padding: 60px 8%;
+            }
+
+            .section-title{
+                text-align: center;
+                font-size: 35px;
+                color: var(--azul);
+                margin-bottom: 40px;
+            }
+
+            /* TARJETAS */
+
+            .cards{
+                display: grid;
+                grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+                gap: 30px;
+            }
+
+            .card{
+                background: white;
+                padding: 30px;
+                border-radius: 20px;
+                box-shadow: var(--sombra);
+                transition: 0.3s;
+            }
+
+            .card:hover{
+                transform: translateY(-10px);
+            }
+
+            .card h3{
+                color: var(--azul-medioclaro);
+                margin-bottom: 20px;
+            }
+
+            .card ul{
+                margin-left: 20px;
+            }
+
+            .card li{
+                margin-bottom: 10px;
+            }
+
+            /* DOCENTES */
+
+            .docente{
+                margin-top: 15px;
+                padding: 10px;
+                background: var(--amarillo);
+                border-radius: 10px;
+            }
+
+            /* FORMULARIO */
+
+            form{
+                background: white;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: var(--sombra);
+                max-width: 700px;
+                margin: auto;
+            }
+
+            form input,
+            form textarea{
+                width: 100%;
+                padding: 15px;
+                margin: 15px 0;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+            }
+
+            form button{
+                width: 100%;
+                padding: 15px;
+                border: none;
+                background: var(--amarillo);
+                color: black;
+                font-size: 18px;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            form button:hover{
+                background: var(--rojo-tinto);
+                color: black;
+            }
+            
+            /* FOOTER */
+
+            footer{
+                background: var(--rojo-tinto);
+                color: white;
+                text-align: center;
+                padding: 25px;
+                margin-top: 50px;
+            }
+
+            /* RESPONSIVE */
+
+            @media(max-width:768px){
+
+                .hero h2{
+                    font-size: 35px;
+                }
+
+                nav ul{
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <header>
+            <h1>Colegio Cristiano Mixto Pre-Universitario Pestalozzi</h1>
+            <p>Educación de Calidad en Quetzaltenango</p>
+        </header>
+
+        <nav>
+            <ul>
+
+                <li><a href="#">Inicio</a></li>
+
+                <li class="dropdown">
+                    <a href="#">Grados ▼</a>
+
+                    <div class="dropdown-content">
+                        <a href="#primaria">Primaria</a>
+                        <a href="#basicos">Básicos</a>
+                        <a href="#diversificado">Diversificado</a>
+                    </div>
+                </li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#comentarios">Comentarios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Bienvenidos al Colegio Pestalozzi</h2>
+                <p>Formando líderes con excelencia académica y valores.</p>
+
+                <a href="#cursos" class="btn">Ver Cursos</a>
+            </div>
+        </section>
+
+        <!-- PRIMARIA -->
+
+        <section id="primaria">
+
+            <h2 class="section.title">Primaria</h2>
+        
+            <div class="cards">
+                <div class="card">
+
+                    <h3>Materias</h3>
+
+                    <ul>
+                        <li>Matemática</li>
+                        <li>Comunicación</li>
+                        <li>Ciencias Naturales</li>
+                        <li>Ciencias Sociales</li>
+                        <li>Inglés</li>
+                        <li>Computación</li>
+                        <li>Arte</li>
+                        <li>Música</li>
+                        <li>Educación Física</li>
+                        <li>Valores</li>
+                    </ul>
+
+                    <div class="docente">
+                        <strong>Docente:</strong> Licda. Mónica Cesia María Alvarado Yax<br>
+                        <strong>Tel:</strong> 4058-3807
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- BASICOS -->
+
+        <section id="basicos">
+
+            <h2 class="section-title">Nivel Básico</h2>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>Materias</h3>
+
+                    <ul>
+                        <li>Álgebra</li>
+                        <li>Física</li>
+                        <li>Biología</li>
+                        <li>Química</li>
+                        <li>Literatura</li>
+                        <li>Computación</li>
+                        <li>Inglés Técnico</li>
+                        <li>Contabilidad</li>
+                        <li>Educación Física</li>
+                        <li>Seminario</li>
+                    </ul>
+
+                    <div class="docente">
+                        <strong>Docente:</strong> Licda. Maytte Mazariegos <br>
+                        <strong>Tel:</strong> 5116-4770
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- DIVERSIFICADO -->
+
+        <section id="diversificado">
+
+            <h2 class="section-title">Diversificado</h2>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>Carreras Disponibles</h3>
+
+                    <ul>
+                        <li>Bachillerato en Computación</li>
+                        <li>Perito Contador</li>
+                        <li>Bachillerato en Ciencias y Letras</li>
+                        <li>Secretariado</li>
+                        <li>Diseño Gráfico</li>
+                        <li>Programación</li>
+                        <li>Marketing</li>
+                        <li>Redes</li>
+                        <li>Administración</li>
+                        <li>Emprendimiento</li>
+                    </ul>
+
+                    <div class="docente">
+                        <strong>Docente:</strong> Lic. Carlos Daniel Vásquez López<br>
+                        <strong>Tel:</strong> 4581-1642
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CURSOS -->
+
+        <section id="cursos">
+
+            <h2 class="section-title">Información de Cursos</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Curso de Computación</h3>
+                    <p>Aprendizaje de programación, redes y diseño web.</p>
+                    <p>Docente: Lic. Janiel Isaac Velásquez Gómez</p>
+                    <p>Tel: 5228-178</p>
+                    <a href="#" class="btn">Más Información</a>
+                </div>
+
+                <div class="card">
+                    <h3>Curso de Inglés</h3>
+                    <p>Preparación académica y conversación profesional.</p>
+                    <p>Docente: Licda. Melany Lizbeth Monzón Hernández</p>
+                    <p>Tel: 5700-7097</p>
+                    <a href="#" class="btn">Más Información</a>
+                </div>
+
+                <div class="card">
+                    <h3>Curso de Robótica</h3>
+                    <p>Desarrollo tecnológico y automatización.</p>
+                    <p>Docente: Lic. Brayan Josué Javier Cotom Cayax</p>
+                    <p>Tel: 5483-3476</p>
+                    <a href="#" class="btn">Más Información</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- COMENTARIOS -->
+
+        <section id="comentarios">
+
+            <h2 class="section-title">Comentarios Estudiantiles</h2>
+
+            <form>
+
+                <input type="text" placeholder="Nombre Completo">
+
+                <input type="email" placeholder="Correo Electrónico">
+
+                <textarea rows="6" placeholder="Escribe tu comentario aquí..."></textarea>
+
+                <button type="submit">Enviar Comentario</button>
+
+            </form>
+
+        </section>
+
+        <!-- CONTACTO -->
+
+        <section id="contacto">
+
+            <h2 class="section-title">Contacto</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Información</h3>
+
+                    <p><strong>Dirección:</strong>8a Calle 5-13 Zona 1, Quetzaltenango</p>
+
+                    <p><strong>Teléfono:</strong> 7766-9611</p>
+
+                    <p><strong>Email:</strong>info@pestalozi.edu.gt</p>
+
+                    <a href="#" class="btn">Solicitar Información</a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer>
+
+            <p>© 2026 Carlos Vásquez</p>
+
+        </footer>
+
+        <script>
+
+            //Animación simple de botones
+
+            const botones = document.querySelectorAll('.btn');
+
+            botones.forEach(btn =>{
+
+                btn.addEventListener('mouseover', () => {
+                    btn.style.boxShadow = '0 0 15px #9acd32';
+                });
+
+            });
+
+            //comentario enviado
+
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', function(e){
+                
+                e.preventDefault();
+
+                alert("Comentario enviado correctamente.");
+
+                form.reset();
+
+            });
+
+        </script>
+
+        </body>
+        </html>
